@@ -7,5 +7,5 @@ function searchWeather() {
     if (CITY_NAME.length == 0) {
         return alert('Please enter a city name');
     }
-    alert(CITY_NAME)
+    alert(CITY_NAME);
 }
