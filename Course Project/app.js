@@ -1,5 +1,6 @@
 import * as ELEMENTS from "elements.js";
 import { Http } from "http.js";
+import {WeatherData, WEATHER_PROXY_HANDLER} from 'weather-data.js';
 
 const APP_ID = '';
 
@@ -14,7 +15,9 @@ function searchWeather() {
 
   Http.fetchData(URL)
     .then(responseData => {
-        
+        const WEATHER_DATA = new WeatherData(CITY_NAME, responseData.weather[0].description.toUpperCase());
+        const WEATHER_PROXY = new Proxy(WEATHER_DATA, WEATHER_PROXY_HANDLER);
+        WWATHER_PROXY.temperature = responseData.main.temp;
     })
   .catch(error => alert(error));
 }
