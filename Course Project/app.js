@@ -1,5 +1,5 @@
 import * as ELEMENTS from "elements.js";
-import { Http } from "http.js";
+import {Http} from "http.js";
 import {WeatherData, WEATHER_PROXY_HANDLER} from 'weather-data.js';
 
 const APP_ID = 'ea692beb1a44fdae87f437a6fd3c2cf4';
@@ -7,7 +7,7 @@ const APP_ID = 'ea692beb1a44fdae87f437a6fd3c2cf4';
 ELEMENTS.ELEMENT_SEARCH_BUTTON.addEventListener("click", searchWeather);
 
 function searchWeather() {
-  const CITY_NAME = ELEMENTS.ELEMENT_SEARCH_CITY.value.trim();
+  const CITY_NAME = ELEMENTS.ELEMENT_SEARCHED_CITY.value.trim();
   if (CITY_NAME.length == 0) {
     return alert("Please enter a city name");
   }
@@ -21,10 +21,10 @@ function searchWeather() {
         WEATHER_PROXY.temperature = responseData.main.temp;
         updateWeather(WEATHER_PROXY);
     })
-  .catch(error => alert(error));
+    .catch(error => alert(error));
 }
 
-function updateWeather(WeatherData) {
+function updateWeather(weatherData) {
     console.log(weatherData);
     ELEMENTS.ELEMENT_WEATHER_CITY.textContent = weatherData.cityName;
     ELEMENTS.ELEMENT_WEATHER_DESCRIPTION.textContent = weatherData.description;
